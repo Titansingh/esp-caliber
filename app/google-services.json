@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "468420390211",
+    "project_id": "ebook-3a043",
+    "storage_bucket": "ebook-3a043.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468420390211:android:83fc8338cacba4e05413f6",
+        "android_client_info": {
+          "package_name": "com.example.ebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468420390211-hkd136fokbuets3eh5v6l0epd1psroqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdzD90mb4uASJ1dK5wJgyGIA00O7ZHxPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468420390211-hkd136fokbuets3eh5v6l0epd1psroqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468420390211:android:add95adde28b53ca5413f6",
+        "android_client_info": {
+          "package_name": "com.intern.ebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468420390211-hkd136fokbuets3eh5v6l0epd1psroqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdzD90mb4uASJ1dK5wJgyGIA00O7ZHxPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468420390211-hkd136fokbuets3eh5v6l0epd1psroqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
