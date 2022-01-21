@@ -4,6 +4,8 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.example.ebook.databinding.ActivityLoginBinding
@@ -30,14 +32,22 @@ class LoginActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_id1))
             .requestEmail()
             .build()
         auth = Firebase.auth
+        binding.main.setOnClickListener{
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent (this,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }, 500)
+        }
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         binding.SignInButton.setOnClickListener{
             signIn()
+
         }
 
     }
