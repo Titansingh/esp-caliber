@@ -4,11 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
-        <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_log_in.xml" value="0.1171875" />
-        <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_login.xml" value="0.20108695652173914" />
-        <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/list_item_rc_main.xml" value="0.176" />
+        <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_main.xml" value="0.21195652173913043" />
       </map>
     </option>
   </component>
