@@ -22,20 +22,20 @@ class rc_main_adapter(private val bookList: ArrayList<Book>) : RecyclerView.Adap
 
         val book : Book = bookList[position]
         holder.bookname.text = book.name!![0].toUpperCase()+ book.name!!.substring(1)
-        holder.bookid.text = book.bookid.toString()
-        holder.bookauthor.text = book.author
+        holder.bookid.text = "Book Id: "+book.bookid.toString()
+        holder.bookauthor.text = "Book Author: "+book.author
 
 
-        Glide.with(holder.itemView.getContext()).load(book.url).into(holder.bookimg);
+        Glide.with(holder.itemView.getContext()).load(book.url).into(holder.bookimg)
     }
 
     override fun getItemCount(): Int {
        return bookList.size
     }
- public class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-     val bookname : TextView = itemView.findViewById(R.id.bookname)
-     val bookid : TextView = itemView.findViewById(R.id.bookid)
-     val bookimg : ImageView = itemView.findViewById(R.id.bookimg)
-     val bookauthor : TextView = itemView.findViewById(R.id.bookauthor)
+ class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+     val bookname : TextView = itemView.findViewById(R.id.bookName)
+     val bookid : TextView = itemView.findViewById(R.id.bookId)
+     val bookimg : ImageView = itemView.findViewById(R.id.bookImage)
+     val bookauthor : TextView = itemView.findViewById(R.id.bookAuthor)
  }
 }
