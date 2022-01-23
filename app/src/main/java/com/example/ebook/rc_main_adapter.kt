@@ -23,7 +23,7 @@ class rc_main_adapter(private val bookList: ArrayList<Book>) : RecyclerView.Adap
         val book : Book = bookList[position]
         holder.bookname.text = book.name!![0].toUpperCase()+ book.name!!.substring(1)
         holder.bookid.text = "Book Id: "+book.bookid.toString()
-        holder.bookauthor.text = "Book Author: "+book.author
+        holder.bookauthor.text = "By:-"+book.author
 
 
         Glide.with(holder.itemView.getContext()).load(book.url).into(holder.bookimg)
