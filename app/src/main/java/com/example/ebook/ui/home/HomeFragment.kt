@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
 
         binding.openstorage.setOnClickListener(){
 
-            showFileChooser()
+            isReadStoragePermissionGranted()
         }
 
     }
@@ -84,12 +84,13 @@ class HomeFragment : Fragment() {
 //    }
 
 
-    fun isReadStoragePermissionGranted(file:String?): Boolean {
+    fun isReadStoragePermissionGranted(): Boolean {
         return if (Build.VERSION.SDK_INT >= 23) {
             if (checkSelfPermission(requireActivity(),Manifest.permission.READ_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED
             ) {
                 Log.v("TAG", "Permission is granted1")
+                showFileChooser()
 //                val config: Config = Config()
 //                    .setAllowedDirection(Config.AllowedDirection.ONLY_VERTICAL)
 //                    .setDirection(Config.Direction.VERTICAL)
@@ -127,6 +128,7 @@ class HomeFragment : Fragment() {
             2 -> {
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    showFileChooser()
 
                     //resume tasks needing this permission
 //                    val config: Config = Config()

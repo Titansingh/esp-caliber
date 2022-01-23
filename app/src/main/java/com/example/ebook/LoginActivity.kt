@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
         binding.main.setOnClickListener{
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent (this,MainActivity::class.java)
+                val intent = Intent (this,MainActivity2::class.java)
                 startActivity(intent)
                 finish()
             }, 500)
