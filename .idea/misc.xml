@@ -4,10 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/drawable/bg_button.xml" value="0.2703125" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/drawable/ic_google.xml" value="0.2703125" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/drawable/ic_profile.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_on_boarding.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/home_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/item_book_details.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/item_page.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/list_item_rc_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/progress_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/layout/read_fragment.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Anurag/AndroidStudioProjects/Ebook/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/vaibh/AndroidStudioProjects/Ebook/app/src/main/res/layout/activity_main.xml" value="0.21195652173913043" />
       </map>
     </option>
