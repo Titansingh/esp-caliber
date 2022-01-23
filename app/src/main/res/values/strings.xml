@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Ebook</string>
     <string name="default_web_client_id1">468420390211-hkd136fokbuets3eh5v6l0epd1psroqg.apps.googleusercontent.com</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

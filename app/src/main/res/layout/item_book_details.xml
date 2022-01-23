@@ -36,13 +36,14 @@
             android:layout_marginStart="4dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="@+id/cardView" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/bookId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
