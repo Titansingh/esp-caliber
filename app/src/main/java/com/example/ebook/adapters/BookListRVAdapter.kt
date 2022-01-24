@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ebook.R
@@ -20,11 +21,12 @@ class BookListRVAdapter (options: FirestoreRecyclerOptions<BookDetails>, private
         val bookId: TextView = itemView.findViewById(R.id.bookId)
         val bookAuthor: TextView = itemView.findViewById(R.id.bookAuthor)
         val bookImage: ImageView = itemView.findViewById(R.id.bookImage)
+        val bookCard: CardView = itemView.findViewById(R.id.readFragmentCardView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListViewHolder {
         val viewHolder = BookListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_book_details,parent,false))
-        viewHolder.bookName.setOnClickListener{
+        viewHolder.bookCard.setOnClickListener{
             listener.onBookNameClicked(snapshots.getSnapshot(viewHolder.adapterPosition).id)
         }
         return viewHolder
