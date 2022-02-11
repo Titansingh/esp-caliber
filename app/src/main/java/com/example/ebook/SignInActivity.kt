@@ -3,13 +3,17 @@ package com.example.ebook
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils.isEmpty
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import com.example.ebook.MainActivity
 import com.example.ebook.models.User
 import com.example.ebook.daos.UserDao
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -33,11 +37,14 @@ class SignInActivity : AppCompatActivity() {
     lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
         auth = Firebase.auth
+
+        //auth.createUserWithEmailAndPassword()
 
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -46,13 +53,61 @@ class SignInActivity : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+
         val signInButton: Button = findViewById(R.id.signInButton)
+        val logInButton : Button = findViewById(R.id.logInbutton)
+        val emailid: EditText = findViewById(R.id.email)
+        val password : EditText = findViewById(R.id.password)
         signInButton.setOnClickListener {
             signIn()
         }
 
-    }
+        logInButton.setOnClickListener {
+            if(!isEmpty(emailid.text)&&!isEmpty(password.text)){
 
+            singnInemail(emailid.text.toString(),password.text.toString())}
+
+        }
+
+
+
+
+
+
+    }
+    private  fun singnInemail(email:String ,password:String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnFailureListener(this){task ->
+            createUser(email,password)
+
+
+            }
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d("TAG", "signInWithEmail:success")
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w("TAG", "signInWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                    updateUI(null)
+                }
+            }
+    }
+    private  fun createUser(email: String,password: String){
+        GlobalScope.launch(Dispatchers.IO) {
+            val auth = auth.createUserWithEmailAndPassword(email,password).await()
+            val firebaseUser = auth.user
+            withContext(Dispatchers.Main) {
+                updateUI(firebaseUser)
+            }
+        }
+
+
+    }
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
