@@ -80,11 +80,11 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         signOutButton.setOnClickListener {
-//            signout()
+           signout()
 
 
-            val mainActivityIntent = Intent(requireActivity(), AddMob::class.java)
-            startActivity(mainActivityIntent)
+//            val mainActivityIntent = Intent(requireActivity(), AddMob::class.java)
+//            startActivity(mainActivityIntent)
 
 
 
