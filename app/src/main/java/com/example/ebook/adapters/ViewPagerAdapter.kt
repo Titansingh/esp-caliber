@@ -11,11 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.example.ebook.R
 
-class ViewPagerAdapter(private var instructionText: List<String>,private var imageUrls: List<String>, val listener: IPageAdapter) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>(){
+class ViewPagerAdapter(private var instructionText: List<String>,private var imageUrls: List<String>) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>(){
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder (itemView) {
         val pageText: TextView = itemView.findViewById(R.id.textOnBoarding)
-        val getStartedButton: Button = itemView.findViewById(R.id.getStartedButton)
+
         val pageImage: ImageView = itemView.findViewById(R.id.imageOnBoarding)
     }
 
@@ -29,23 +29,10 @@ class ViewPagerAdapter(private var instructionText: List<String>,private var ima
         val currentUrl = imageUrls[position]
         holder.pageText.text = currentText
         Glide.with(holder.itemView).load(currentUrl).override(Target.SIZE_ORIGINAL).into(holder.pageImage)
-        if(position==itemCount-1){
-            holder.getStartedButton.visibility = View.VISIBLE
-            holder.getStartedButton.isClickable = true
-        }
-        else {
-            holder.getStartedButton.visibility = View.GONE
-            holder.getStartedButton.isClickable = false
-        }
-        holder.getStartedButton.setOnClickListener {
-            listener.onGetStartedClicked()
-        }
+
     }
 
     override fun getItemCount(): Int {
         return instructionText.size
     }
-}
-interface IPageAdapter{
-    fun onGetStartedClicked()
 }

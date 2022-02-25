@@ -4,14 +4,25 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.widget.FrameLayout
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
-import com.example.ebook.adapters.IPageAdapter
+
 import com.example.ebook.adapters.ViewPagerAdapter
+import com.example.ebook.adapters.ViewPagerAdapterbottomnav
 import me.relex.circleindicator.CircleIndicator3
 
-class OnBoardingActivity : AppCompatActivity(), IPageAdapter {
+class OnBoardingActivity : AppCompatActivity() {
+    private lateinit var progressBar : ProgressBar
+    private lateinit var nextButton : FrameLayout
+    private lateinit var nextText : TextView
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_boarding)
@@ -30,13 +41,59 @@ class OnBoardingActivity : AppCompatActivity(), IPageAdapter {
             "https://i.postimg.cc/FzpqvmQH/3.jpg",
             "https://i.postimg.cc/3NtL6Bgy/4.jpg"
         )
-        val adapter = ViewPagerAdapter(instructions, imageUrls, this)
+        val adapter = ViewPagerAdapter(instructions, imageUrls)
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
+        nextButton = findViewById(R.id.nextButton)
+        nextText = findViewById(R.id.nextText)
+
+        nextButton.setOnClickListener {
+
+            when(viewPager.currentItem) {
+                0-> viewPager.setCurrentItem(1)
+                1-> viewPager.setCurrentItem(2)
+                2-> viewPager.setCurrentItem(3)
+                3-> {
+                    saveData()
+                    startActivity(Intent(this, SplashScreenActivity::class.java))
+                    }
+
+            }
+            }
+
+
+        var myPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+            @RequiresApi(Build.VERSION_CODES.P)
+            override fun onPageSelected(position: Int) {
+                when(position){
+                    0->{
+                        increseprogress(25)
+                        nextText.setText("NEXT")
+                    }
+                    1->{
+                        increseprogress(50)
+                        nextText.setText("NEXT")
+                    }
+                    2->{
+                        increseprogress(75)
+                        nextText.setText("NEXT")
+                    }
+                    3->{
+                        increseprogress(100)
+                        nextText.setText("GET STARTED")
+                    }
+
+                }
+
+            }
+        }
+        viewPager.registerOnPageChangeCallback(myPageChangeCallback)
         viewPager.adapter = adapter
         viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        progressBar= findViewById(R.id.progress_bar)
 
-        val circleIndicator3: CircleIndicator3 = findViewById(R.id.circleIndicator)
-        circleIndicator3.setViewPager(viewPager)
+
+
+
 
     }
 
@@ -52,9 +109,12 @@ class OnBoardingActivity : AppCompatActivity(), IPageAdapter {
 
     }
 
-    override fun onGetStartedClicked() {
-        saveData()
-        startActivity(Intent(this, SplashScreenActivity::class.java))
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private  fun increseprogress(pos:Int) {
+        progressBar.setProgress(pos, true)
+
+
     }
 
 }

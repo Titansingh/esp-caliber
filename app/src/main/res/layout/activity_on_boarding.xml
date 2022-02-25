@@ -36,22 +36,44 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/circleIndicator"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleOnBoarding" />
 
-    <me.relex.circleindicator.CircleIndicator3
-        android:id="@+id/circleIndicator"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        app:ci_drawable="@drawable/ic_selected"
-        app:ci_drawable_unselected="@drawable/ic_unselected"
+
+
+    <FrameLayout
+        android:layout_margin="10dp"
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:progress="50"
+            app:showAnimationBehavior="inward"
+            android:indeterminate="false"
+            app:trackThickness ="50dp"
+             />
+
+
+        <TextView
+            android:id="@+id/nextText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="NEXT"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
