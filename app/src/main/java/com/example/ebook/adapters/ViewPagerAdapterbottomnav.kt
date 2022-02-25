@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.adapter.FragmentViewHolder
 import com.example.ebook.MainActivity
 import com.example.ebook.fragments.Home.HomeFragment
 import com.example.ebook.fragments.Read.ReadFragment
@@ -23,4 +24,17 @@ class ViewPagerAdapterbottomnav(fragmentManager: FragmentManager, lifecycle: Lif
             else -> Fragment()
         }
     }
+
+    override fun onBindViewHolder(
+        holder: FragmentViewHolder,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        super.onBindViewHolder(holder, position, payloads)
+
+    }
+    interface IViewPagerAdapterbottomnav {
+        fun onPageSelected(position: Int)
+    }
+
 }

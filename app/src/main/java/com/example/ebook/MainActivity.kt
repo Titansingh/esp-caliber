@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class MainActivity :  FragmentActivity() {
+class MainActivity :  FragmentActivity(), ViewPagerAdapterbottomnav.IViewPagerAdapterbottomnav {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var bookDao: BookDao
@@ -40,11 +40,17 @@ class MainActivity :  FragmentActivity() {
         viewPager.adapter = pagerAdapter
 
 
-        when (viewPager.currentItem) {
-            0 -> {}
-            1 -> {}
+fun changepos(position: Int) {
+    when (position) {
+        0 -> navView.setSelectedItemId(R.id.nav_read)
+        1 -> navView.setSelectedItemId(R.id.nav_home)
 
-        }
+    }
+}
+
+
+//        navView.setSelectedItemId(R.id.nav_home)
+
 
 
 
@@ -128,6 +134,9 @@ class MainActivity :  FragmentActivity() {
                 }
             }
         }
+    }
+
+    override fun onPageSelected(position: Int) {
     }
 
 
