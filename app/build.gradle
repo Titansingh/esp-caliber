@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+    //custom nav
+    implementation 'nl.joery.animatedbottombar:library:1.0.9'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'

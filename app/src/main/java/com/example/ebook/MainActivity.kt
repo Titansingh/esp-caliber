@@ -4,36 +4,73 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.example.ebook.adapters.ViewPagerAdapterbottomnav
 import com.example.ebook.daos.BookDao
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class MainActivity : AppCompatActivity() {
+class MainActivity :  FragmentActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var bookDao: BookDao
     lateinit var mAdView : AdView
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val navView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        val navController = findNavController(R.id.fragmentContainerView)
-        navView.setupWithNavController(navController)
+//        val navController = findNavController(R.id.fragmentContainerView)
+//        navView.setupWithNavController(navController)
+        // Instantiate a ViewPager2 and a PagerAdapter.
+        viewPager = findViewById(R.id.fragmentContainerView)
+
+        // The pager adapter, which provides the pages to the view pager widget.
+        val pagerAdapter = ViewPagerAdapterbottomnav(supportFragmentManager, lifecycle)
+        viewPager.adapter = pagerAdapter
+
+
+        when (viewPager.currentItem) {
+            0 -> {}
+            1 -> {}
+
+        }
+
+
+
+
+
+        navView.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_read->viewPager.currentItem = 0
+                R.id.nav_home->viewPager.currentItem = 1
+
+            }
+            true
+        }
+        navView.setOnNavigationItemReselectedListener {
+            when(it.itemId){
+                R.id.nav_read->viewPager.currentItem = 0
+                R.id.nav_home->viewPager.currentItem = 1
+
+            }
+            true
+        }
+
+
+
+
+
 
         auth = Firebase.auth
         bookDao = BookDao()
@@ -92,5 +129,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 
 }
