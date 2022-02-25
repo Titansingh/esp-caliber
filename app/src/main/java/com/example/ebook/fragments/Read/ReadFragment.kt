@@ -72,22 +72,22 @@ class ReadFragment : Fragment(), IBookListRVAdapter {
         recyclerView.itemAnimator = null
 
         //for reading from external storage
-        val readButton: Button = view.findViewById(R.id.buttonReadOffline)
+//        val readButton: Button = view.findViewById(R.id.buttonReadOffline)
 
-        readButton.setOnClickListener {
-
-            if (ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED
-            ){
-                Toast.makeText(requireContext(),"Grant Permission First",Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireContext(),MainActivity::class.java)
-                startActivity(intent)
-            }
-
-            else {
-                showFileChooser()
-            }
-        }
+//        readButton.setOnClickListener {
+//
+//            if (ContextCompat.checkSelfPermission(requireActivity(),Manifest.permission.READ_EXTERNAL_STORAGE)
+//                != PackageManager.PERMISSION_GRANTED
+//            ){
+//                Toast.makeText(requireContext(),"Grant Permission First",Toast.LENGTH_SHORT).show()
+//                val intent = Intent(requireContext(),MainActivity::class.java)
+//                startActivity(intent)
+//            }
+//
+//            else {
+//                showFileChooser()
+//            }
+//        }
 
     }
 
@@ -113,41 +113,41 @@ class ReadFragment : Fragment(), IBookListRVAdapter {
         }
     }
 
-    private fun showFileChooser() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "*/*"
-        intent.addCategory(Intent.CATEGORY_OPENABLE)
-        try {
-            startActivityForResult(
-                Intent.createChooser(intent, "Select a File to Upload"), 1
-            )
-        } catch (ex: ActivityNotFoundException) {
-            // Potentially direct the user to the Market with a Dialog
-            Toast.makeText(
-                requireContext(), "Please install a File Manager.",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
+//    private fun showFileChooser() {
+//        val intent = Intent(Intent.ACTION_GET_CONTENT)
+//        intent.type = "*/*"
+//        intent.addCategory(Intent.CATEGORY_OPENABLE)
+//        try {
+//            startActivityForResult(
+//                Intent.createChooser(intent, "Select a File to Upload"), 1
+//            )
+//        } catch (ex: ActivityNotFoundException) {
+//            // Potentially direct the user to the Market with a Dialog
+//            Toast.makeText(
+//                requireContext(), "Please install a File Manager.",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+//    }
 
-    @SuppressLint("Range")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            1 -> if (resultCode === AppCompatActivity.RESULT_OK) {
-                // Get the Uri of the selected file
-                val uri: Uri? = data!!.data
-                val uriString =uri!!.path.toString()
-                Log.e("filex",uriString)
-                val myFile = File(uriString)
-                var path = myFile.canonicalPath
-                path=path.split(":")[1]
-                val folioReader = FolioReader.get()
-                val file = File(Environment.getExternalStorageDirectory(), path)
-                folioReader.openBook(file.path)
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
+//    @SuppressLint("Range")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        when (requestCode) {
+//            1 -> if (resultCode === AppCompatActivity.RESULT_OK) {
+//                // Get the Uri of the selected file
+//                val uri: Uri? = data!!.data
+//                val uriString =uri!!.path.toString()
+//                Log.e("filex",uriString)
+//                val myFile = File(uriString)
+//                var path = myFile.canonicalPath
+//                path=path.split(":")[1]
+//                val folioReader = FolioReader.get()
+//                val file = File(Environment.getExternalStorageDirectory(), path)
+//                folioReader.openBook(file.path)
+//            }
+//        }
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
 
     override fun onStart() {
 

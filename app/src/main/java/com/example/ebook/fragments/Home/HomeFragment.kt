@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
     private val profileCollection = db.collection("profiles")
     private val userCollection = db.collection("users")
     private val auth = Firebase.auth
-    lateinit var googleSignInClient: GoogleSignInClient
+//    lateinit var googleSignInClient: GoogleSignInClient
 
 
 
@@ -59,17 +59,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("1081601290632-sjmbp696nesaese0b0oevvntu5ff8igk.apps.googleusercontent.com")
-            .requestEmail()
-            .build()
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken("1081601290632-sjmbp696nesaese0b0oevvntu5ff8igk.apps.googleusercontent.com")
+//            .requestEmail()
+//            .build()
+//        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         val name: TextView = view.findViewById(R.id.textViewUserName)
         val email: TextView = view.findViewById(R.id.textViewUserEmail)
         val userReadTime: TextView = view.findViewById(R.id.textViewUserReadTime)
         val userImage: ImageView = view.findViewById(R.id.imageViewUser)
-        val signOutButton: Button = view.findViewById(R.id.signOutButton)
+//        val signOutButton: Button = view.findViewById(R.id.signOutButton)
         val currentUser = auth.currentUser!!.uid
         var currentReadTime: Double
         var userName: String
@@ -79,16 +79,9 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewBooksRead)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        signOutButton.setOnClickListener {
-           signout()
-
-
-//            val mainActivityIntent = Intent(requireActivity(), AddMob::class.java)
-//            startActivity(mainActivityIntent)
-
-
-
-        }
+//        signOutButton.setOnClickListener {
+//           signout()
+//        }
 
         val query: Task<QuerySnapshot> =
             profileCollection.whereEqualTo("ownerId", currentUser).get()
@@ -117,20 +110,20 @@ class HomeFragment : Fragment() {
 
 
     }
-    fun signout(){
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Are you sure?")
-        builder.setMessage("You cannot access files on our store after signing out!")
-        builder.setPositiveButton("Yes") { dialog, which ->
-            googleSignInClient.signOut()
-            auth.signOut()
-            startActivity(Intent(requireContext(), SignInActivity::class.java))
-        }
-        builder.setNegativeButton("No") { dialog, which ->
-            Toast.makeText(requireContext(), "Operation Canceled", Toast.LENGTH_SHORT).show()
-        }
-        builder.setCancelable(true)
-        builder.show()
-    }
+//    fun signout(){
+//        val builder = AlertDialog.Builder(requireContext())
+//        builder.setTitle("Are you sure?")
+//        builder.setMessage("You cannot access files on our store after signing out!")
+//        builder.setPositiveButton("Yes") { dialog, which ->
+//            googleSignInClient.signOut()
+//            auth.signOut()
+//            startActivity(Intent(requireContext(), SignInActivity::class.java))
+//        }
+//        builder.setNegativeButton("No") { dialog, which ->
+//            Toast.makeText(requireContext(), "Operation Canceled", Toast.LENGTH_SHORT).show()
+//        }
+//        builder.setCancelable(true)
+//        builder.show()
+//    }
 
 }

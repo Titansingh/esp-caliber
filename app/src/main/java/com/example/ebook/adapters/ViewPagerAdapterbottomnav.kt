@@ -33,8 +33,6 @@ class ViewPagerAdapterbottomnav(fragmentManager: FragmentManager, lifecycle: Lif
         super.onBindViewHolder(holder, position, payloads)
 
     }
-    interface IViewPagerAdapterbottomnav {
-        fun onPageSelected(position: Int)
-    }
+
 
 }
