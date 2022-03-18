@@ -1,6 +1,7 @@
 package com.example.ebook
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.isEmpty
@@ -10,7 +11,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.viewpager2.widget.ViewPager2
 import com.example.ebook.MainActivity
+import com.example.ebook.adapters.ViewPagerAdapter
+import com.example.ebook.adapters.ViewPagerAdapterSignIn
+import com.example.ebook.adapters.ViewPagerAdapterbottomnav
 import com.example.ebook.models.User
 import com.example.ebook.daos.UserDao
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
@@ -20,6 +26,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -36,6 +44,7 @@ class SignInActivity : AppCompatActivity() {
     private val RC_SIGN_IN: Int = 123
     lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +67,31 @@ class SignInActivity : AppCompatActivity() {
         val logInButton : Button = findViewById(R.id.logInbutton)
         val emailid: EditText = findViewById(R.id.email)
         val password : EditText = findViewById(R.id.password)
+        val tabLayout = findViewById<TabLayout>(R.id.tablayout)
+        val viewPager2 = findViewById<ViewPager2>(R.id.viewPagerl)
+        val adapter = ViewPagerAdapterSignIn(supportFragmentManager, lifecycle)
+
+        // The pager adapter, which provides the pages to the view pager widget.
+
+        var myPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+            @RequiresApi(Build.VERSION_CODES.P)
+            override fun onPageSelected(position: Int) {
+
+            }
+        }
+
+        viewPager2.registerOnPageChangeCallback(myPageChangeCallback)
+
+//        viewPager2.setUserInputEnabled(false);
+        viewPager2.adapter = adapter
+        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+            when (position) {
+                0 -> tab.text = "login"
+                1 -> tab.text = "Signup"
+
+            }
+        }.attach()
+
         signInButton.setOnClickListener {
             signIn()
         }
